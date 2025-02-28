@@ -75,6 +75,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   CustomTextFormField(
                     keyboardType: TextInputType.number,
                     controller: _nameController,
+                    prefixIcon: Icon(
+                      Icons.person_pin_rounded,
+                      color: AppColors.textwhite,
+                    ),
                     labelText: "National ID",
                     hintText: "*************",
                     // prefixIcon: Icon(
@@ -142,30 +146,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onPressed: () {},
                         icon: const Icon(Icons.remove_red_eye_rounded)),
                   ),
-                  Text(
-                    'Choose your gender:',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textwhite),
+                  Row(
+                    children: [
+                      Text('Choose your gender:',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textwhite)),
+                      const Gap(20),
+                      DropdownButton<String>(
+                        value: _selectedGender,
+                        hint: const Text('Select Gender'),
+                        onChanged: (value) {
+                          setState(() {
+                            _selectedGender = value; // Update selected gender
+                          });
+                        },
+                        items: _genders.map((String gender) {
+                          return DropdownMenuItem<String>(
+                            value: gender,
+                            child: Text(
+                              gender,
+                              selectionColor: AppColors.textwhite,
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 10), // Spacer
-                  // Dropdown menu for gender selection
-                  DropdownButton<String>(
-                    value: _selectedGender,
-                    hint: const Text('Select Gender'),
-                    onChanged: (value) {
-                      setState(() {
-                        _selectedGender = value; // Update selected gender
-                      });
-                    },
-                    items: _genders.map((String gender) {
-                      return DropdownMenuItem<String>(
-                        value: gender,
-                        child: Text(gender),
-                      );
-                    }).toList(),
-                  ),
+
                   const SizedBox(height: 20), // Spacer
                   // Display selected gender
                   if (_selectedGender != null)
