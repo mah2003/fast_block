@@ -1,3 +1,4 @@
+import 'package:fast_block/core/navigation/app_router.dart';
 import 'package:fast_block/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
@@ -42,7 +43,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
       // Scroll to the bottom of the chat
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeOut,
       );
     } catch (e) {
@@ -59,8 +60,17 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+              onPressed: () {
+                NavigationHelper.goBack(context);
+              },
+              icon: const Icon(
+                Icons.arrow_back_rounded,
+                color: Colors.white,
+              )),
           backgroundColor: AppColors.background,
-          title: Center(
+          title: const Center(
               child: Text(
             'Ask Customer Service',
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -107,8 +117,10 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                     Expanded(
                       child: TextField(
                         controller: _textController,
-                        decoration:
-                            InputDecoration(labelText: 'Type a message'),
+                        decoration: const InputDecoration(
+                            labelText: 'Type a message',
+                            labelStyle:
+                                TextStyle(color: Colors.white, fontSize: 16)),
                       ),
                     ),
                     IconButton(

@@ -1,26 +1,32 @@
 class RegisterModelParams {
   String? gender;
-  int? number;
+  String? nationalId;
+  String? phone;
   String? name;
   String? email;
   String? password;
   String? passwordConfirmation;
+  String? country;
 
   RegisterModelParams({
     this.gender,
-    this.number,
+    this.nationalId,
+    this.phone,
     this.name,
     this.email,
     this.password,
     this.passwordConfirmation,
+    this.country,
   });
 
   Map<String, dynamic> toJson() => {
-        'number': number,
+        'phone': phone,
         'gender': gender,
-        'name': name,
+        'userName': name,
         'email': email,
         'password': password,
-        'password_confirmation': passwordConfirmation,
+        'cPassword': passwordConfirmation,
+        'country': country,
+        'nationalID': nationalId
       };
 }

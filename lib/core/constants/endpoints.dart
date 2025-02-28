@@ -1,15 +1,18 @@
 class AppEndpoints {
   // auth
-  static String login = 'login';
-  static String register = 'register';
-  static String logout = 'logout';
+  static String login = 'auth/login';
+  static String register = 'auth/signup';
+  // static String logout = 'logout';
 
-  // home
-  static String getSliders = 'sliders';
-  static String getBestSeller = 'products-bestseller';
+  // send payment
+  static String sendpayment = 'api/send-payment';
 
-  // wishlist
-  static String addToWishlist = 'add-to-wishlist';
+  //acount
+  // static String getBestSeller = 'products-bestseller';
+
+  // transaction of home
+  static String transationd = 'api/transactions';
+
   static String deleteFromWishlist = 'remove-from-wishlist';
   static String getWishlist = 'wishlist';
 

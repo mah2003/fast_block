@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       "Send money internationally with ease",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.normal,
                           color: AppColors.textwhite),
                     ),
